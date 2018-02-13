@@ -9,6 +9,7 @@
 """
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def softmax(x):
@@ -32,9 +33,51 @@ def sum_example():
     print(np.sum(arr))
 
 
+def vstake_example():
+    """
+    one_like: 与输入维度相同，但是元素数值都变成１
+    hstack vstack 竖着或者横着接起来，数组的维度不变
+    stack 直接接起来，数组维度增加一维
+    :return: 
+    """
+    x = np.array([[1, 2], [3, 4]])
+    # one_like = np.ones_like(x)
+    # print(one_like)
+
+    print(np.vstack([1, 2, 3]))
+    print(np.vstack(([1, 2, 3], [4, 5, 6])))
+    print(np.vstack(([[1, 11], [2, 22], [3, 33]], [[2, 22], [3, 33], [4, 44]])))
+    print(np.hstack(([[1, 11], [2, 22], [3, 33]], [[2, 22], [3, 33], [4, 44]])))
+    print(np.stack(([[1, 11], [2, 22], [3, 33]], [[2, 22], [3, 33], [4, 44]])))
+
+
+def vstake_example2():
+    print(np.vstack([[1, 2], [3, 4], [5, 6]]))
+    print(np.array([[1, 2], [3, 4], [5, 6]]))
+    # print(np.vstack([[1, 2], [3, 4], [5, 6]]))
+
+
+def plot():
+    x = np.arange(-2.0, 6.0, 0.1)
+    # x = np.arange(-2.0, 6.0, 1)
+    print(x)
+    print(x.shape)
+
+    y = np.array([[1, 2, 3], [4, 5, 6]])
+    print(y)
+    print(y.shape)
+
+    scores = np.vstack([x, np.ones_like(x), 0.2 * np.ones_like(x)])
+
+    plt.plot(x, softmax(scores).T, linewidth=2)
+    plt.show()
+
+
 def main():
     # run()
-    sum_example()
+    # sum_example()
+    vstake_example()
+    # plot()
 
 
 if __name__ == '__main__':
